@@ -17,6 +17,9 @@
   },
   "devDependencies": {
     "@aws-crypto/sha256-js": "^4.0.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/svelte-fontawesome": "^0.2.2",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/adapter-static": "^2.0.0",
     "@sveltejs/kit": "^1.5.0",

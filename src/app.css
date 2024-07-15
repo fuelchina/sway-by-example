@@ -178,13 +178,8 @@ input::-webkit-inner-spin-button {
 }
 
 .NavLinks {
-  padding: 5px;
-  text-align: center;
-}
-
-.NavLinks a {
-  color: rgb(209, 213, 219);
-  text-decoration: none;
-  font-size: 18px;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
 }
