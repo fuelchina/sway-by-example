@@ -40,7 +40,7 @@
         return value.toNumber();
       },
     },
-    prev: getExample(import.meta.url).prev,
-    next: getExample(import.meta.url).next,
+    prev: getExample($page.route.id).prev,
+    next: getExample($page.route.id).next,
   };
 </script>
