@@ -178,13 +178,28 @@ input::-webkit-inner-spin-button {
 }
 
 .NavLinks {
-  padding: 5px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
 }
 
-.NavLinks a {
-  color: rgb(209, 213, 219);
+.NavLinks-brand,
+.NavLinks-actionBar {
+  display: flex;
+  align-items: center;
+}
+
+.NavLinks-home {
+  font-size: 1.2em;
+  font-weight: bold;
   text-decoration: none;
-  font-size: 18px;
-  white-space: nowrap;
+}
+
+.NavLinks-home:link,
+.NavLinks-home:visited,
+.NavLinks-home:focus,
+.NavLinks-home:hover,
+.NavLinks-home:active {
+  color: inherit;
 }

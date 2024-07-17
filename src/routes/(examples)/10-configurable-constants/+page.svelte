@@ -36,7 +36,7 @@
         return [value[0].toNumber(), value[1].bits, {x: value[2].x.toNumber(), y: value[2].y.toNumber()}];
       },
     },
-    prev: getExample(import.meta.url).prev,
-    next: getExample(import.meta.url).next,
+    prev: getExample($page.route.id).prev,
+    next: getExample($page.route.id).next,
   };
 </script>

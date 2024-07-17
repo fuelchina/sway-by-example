@@ -1,5 +1,6 @@
-import { defaultConnectors } from '@fuels/connectors';
-import { Contract, ContractFactory, Fuel } from 'fuels';
+import { Contract, ContractFactory } from 'fuels';
+
+import { getFuel } from './wallet';
 
 export function binToHex(str: string): string {
     const encoder = new TextEncoder();
@@ -27,14 +28,13 @@ export async function loadContract(contractId: string, abi: any): Promise<Contra
 }
 
 export async function connectWallet() {
-    const fuel = new Fuel({
-        connectors: defaultConnectors({ devMode: true }),
-    });
-    console.log('current Network:', (await fuel.currentNetwork()).url);
+    const fuel = getFuel();
 
     if (!await fuel.hasConnector()) {
-        await fuel.connect();
+        throw new Error("Please connect wallet first.");
     }
+
+    console.log('current Network:', (await fuel.currentNetwork()).url);
 
     const account = await fuel.currentAccount();
     if (!account) {

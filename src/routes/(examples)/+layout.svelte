@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Split, DefaultSplitter } from "@geoffcox/svelte-splitter";
-  import { Button } from "@svelteuidev/core";
+  import { Button, Space } from "@svelteuidev/core";
+  import { config as faConfig } from "@fortawesome/fontawesome-svg-core";
   import { Buffer } from "buffer";
   import { onMount } from "svelte";
   import { highlightSwayCode as highlightSwayCode } from "$lib/highlight";
@@ -9,12 +10,18 @@
   import { mobile } from "$lib/mobile";
   import store from "$lib/store";
   import { page } from '$app/stores';
+  import NavDropdown from "./NavDropdown.svelte";
+  import WalletConnector from "./WalletConnector.svelte";
+  import LangSelector from "./LangSelector.svelte";
 
+  import "@fortawesome/fontawesome-svg-core/styles.css";
   import "../../loader.css";
   import "../../app.css";
   import "../../shiki.css";
   import { slide } from "svelte/transition";
   import type { Contract } from "fuels";
+
+  faConfig.autoAddCss = false;
 
   BigInt.prototype.toJSON = function () {
     return this.toString();
@@ -99,6 +106,10 @@
     }
     terminalScrollToBottom();
   }
+
+  function changeLang(lang: string) {
+    location.href = `?lang=${lang}`;
+  }
 </script>
 
 {#if !loaded}
@@ -113,8 +124,16 @@
 {/if}
 
 <nav class="NavLinks">
-  <a href="?lang=en" target="_self">English</a>
-  <a href="?lang=zh" target="_self">简体中文</a>
+  <div class="NavLinks-brand">
+    <NavDropdown current={$page.route.id?.split('/').pop()} {lang} />
+    <Space w="xs" />
+    <a class="NavLinks-home" href="/">Sway by Example</a>
+  </div>
+  <div class="NavLinks-actionBar">
+    <WalletConnector />
+    <Space w="xs" />
+    <LangSelector {lang} on:change={event => changeLang(event.detail)} />
+  </div>
 </nav>
 
 {#if !mobile()}
