@@ -10,6 +10,7 @@
   import { mobile } from "$lib/mobile";
   import store from "$lib/store";
   import { page } from '$app/stores';
+  import NavDropdown from "./NavDropdown.svelte";
   import LangSelector from "./LangSelector.svelte";
 
   import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -122,7 +123,10 @@
 {/if}
 
 <nav class="NavLinks">
-  <div style="font-size: 1.2em; font-weight: bold;">Sway By Example</div>
+  <div class="NavLinks-brand">
+    <NavDropdown current={$page.route.id?.split('/').pop()} {lang} />
+    <a class="NavLinks-home" href="/">Sway by Example</a>
+  </div>
   <LangSelector {lang} on:change={event => changeLang(event.detail)} />
 </nav>
 

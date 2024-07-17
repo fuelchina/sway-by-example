@@ -11,14 +11,14 @@
     { code: "zh", text: "简体中文" }
   ];
 
-  export let lang;
+  export let lang: string;
 </script>
 
 <Menu trigger="hover">
   <ActionIcon variant="default" slot="control">
     <FontAwesomeIcon icon={faGlobe} fixedWidth />
   </ActionIcon>
-  {#each langs as item (item.code) }
+  {#each langs as item (item.code)}
     <Menu.Item disabled={item.code === lang} on:click={() => dispatch("change", item.code)}>{item.text}</Menu.Item>
   {/each}
 </Menu>
