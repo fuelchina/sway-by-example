@@ -8,7 +8,7 @@
     <slot />
   </div>
 {:else}
-  <div class="allLinks" style="display: flex; flex-direction:column; padding: 80px 0;">
+  <div class="allLinks" style="display: flex; flex-direction:column; padding: 80px 20px;">
     <slot />
   </div>
 {/if}

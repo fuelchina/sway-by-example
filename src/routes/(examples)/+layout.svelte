@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Split, DefaultSplitter } from "@geoffcox/svelte-splitter";
-  import { Button } from "@svelteuidev/core";
+  import { Button, Space } from "@svelteuidev/core";
   import { config as faConfig } from "@fortawesome/fontawesome-svg-core";
   import { Buffer } from "buffer";
   import { onMount } from "svelte";
@@ -11,6 +11,7 @@
   import store from "$lib/store";
   import { page } from '$app/stores';
   import NavDropdown from "./NavDropdown.svelte";
+  import WalletConnector from "./WalletConnector.svelte";
   import LangSelector from "./LangSelector.svelte";
 
   import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -125,9 +126,14 @@
 <nav class="NavLinks">
   <div class="NavLinks-brand">
     <NavDropdown current={$page.route.id?.split('/').pop()} {lang} />
+    <Space w="xs" />
     <a class="NavLinks-home" href="/">Sway by Example</a>
   </div>
-  <LangSelector {lang} on:change={event => changeLang(event.detail)} />
+  <div class="NavLinks-actionBar">
+    <WalletConnector />
+    <Space w="xs" />
+    <LangSelector {lang} on:change={event => changeLang(event.detail)} />
+  </div>
 </nav>
 
 {#if !mobile()}
